@@ -1,0 +1,5 @@
+each area will have a name and be 50 by 50 spaces for the player to interact with
+
+will each section having 5 by 5 areas
+
+and there being 5 by 2 sects
