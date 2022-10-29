@@ -1,0 +1,22 @@
+  (Start of Tutorial stage 1)
+    {begin cutscene "start"}
+  You start running away from a bear
+  You run into a grove of trees avoiding the bear. You break your flashlight when you run into a tree leaving you only with your Camera.
+    {end of cutscene "start"}
+  The flash of your Camera allows you to see for a split second.
+  You are able to look at the photo for a reference.
+   You explore your surrounding and start trying to survive and get used to your new found blindness.
+
+(End of Tutorial stage 1)
+You walk towards a (field or a forest) and something catches you. 
+You are knocked unconscious 
+
+  (Start of Tutorial stage 2)
+  You wake up in a mysterious cave with people ripped open with no flesh or organs inside their body and their mouths still open like they are screaming, as if eaten alive.
+  You see a figure about 15 feet tall with an emaciated, haggard body, creepily speaking with a voice a little boy you remember from the missing person on the news. 
+You realize you need to escape quickly by retrieving your camera and sneaking out or else you fear the fate of the poeple before you.
+  You escape the cave and feel the chill of the air and take a deep breath. You relize survival's not going to get any easier and you need to start immediatly.
+
+(End of Tutorial)
+
+  (Start of Snapshot!)

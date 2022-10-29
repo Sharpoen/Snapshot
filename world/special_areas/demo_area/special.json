@@ -1,0 +1,15 @@
+{
+  "0,3":{
+    "type":"door",
+    "state":"closed"
+  },
+  "2,5":{
+    "type":"door",
+    "state":"closed"
+  },
+  "5,10":{
+    "type":"sign",
+    "text":"Here is the text",
+    "conditions": ["part 1 complete"]
+  }
+}
