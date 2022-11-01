@@ -2,6 +2,13 @@ import json
 from random import choice
 from parts.esq import *
 
+class player:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+    self.attributes = []
+    self.facing = "east"
+
 class area:
   def __init__(self, path):
     with open("%s/skin.json"%path) as f:
@@ -47,6 +54,7 @@ class area:
           line += r[x*2:x*2+2]
       self.render.append(line)
   def test_render(self, *args):
+    print("| Skin                         | Collision      | Color")
     if len(args)==2:
       for row, row2, row3 in zip(self.render[args[1]:14+args[1]], self.collision[args[1]:14+args[1]], self.color[args[1]:14+args[1]]):
         line=""
@@ -60,21 +68,56 @@ class area:
           line+="%s%s%s"%(esq.black_bg, self.ctc(row3[x]), row[x*2:x*2+2])
         print("| %s%s | %s | %s |"%(line, esq.white+esq.deft_bg, row2[0:14], row3[0:14]))
 
-  
 class world:  #yah um there isn't much here
 
-    def __init__(self, map):
+    def __init__(self, map, special_areas):
         self.map = map
-        
-    def load_area(self, segment, path):
-        # segs -> 'topLeft', 'bottomLeft', 'bottomRight', 'topRight'
-        pass
+        self.demo_area = special_areas["demo"]
+        self.nopass_area = special_areas["nopass"]
+    def gfm(self, row, col, *args): # get from map
+      # args: [default]
+      if row>=0 and col>=0 and row<len(self.map) and col<len(self.map[0]):
+        return self.map[row][col]
+      else:
+        return self.nopass_area
+    def move(self, player, direction):
 
-    def go_north(self):
-        return f"{esq.green}You go north."
-    def go_east(self):
-        return f"{esq.green}You go east."
-    def go_south(self):
-        return f"{esq.green}You go south."
-    def go_west(self):
-        return f"{esq.green}You go west."
+        movey=0
+        movex=0
+        if direction=="north":
+          movey=-1
+        if direction=="east":
+          movex+=1
+        if direction=="south":
+          movey=1
+        if direction=="west":
+          movex-=1
+
+        nx = player.x+movex
+        ny = player.y+movey
+      
+        areay = ny//50
+        areax = nx//50
+        x = nx%50
+        y = ny%50
+
+      
+        special_message = ""
+        if self.gfm(areay, areax).collision[y][x]=="#":
+          return f"{esq.red}You could not go {direction}!"
+        if "%s,%s"%(x,y) in self.gfm(areay, areax).special:
+          item = self.gfm(areay, areax).special["%s,%s"%(x,y)]
+          if item["type"]=="door":
+            if item["state"]=="closed":
+              item["state"]="open"
+              return f"{esq.blue}You open the door."
+            elif item["state"]=="open":
+              special_message = f"{esq.bright_green}You pass through the door."
+      
+        player.y+=movey
+        player.x+=movex
+
+        if special_message == "":
+          return f"{esq.bright_green}You went {direction}."
+        else:
+          return special_message

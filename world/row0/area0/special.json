@@ -1,1 +1,10 @@
-{}
+{
+  "0,0":{
+    "text":"",
+    "type":"note"
+  },
+  "2,1":{
+    "state":"closed",
+    "type":"door"
+  }
+}
